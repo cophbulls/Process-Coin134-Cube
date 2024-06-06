@@ -1,0 +1,2282 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/17/2023 9:40:24 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VHAAUSBI17"
+  DTS:CreatorName="VHA20\VHASPORichaM"
+  DTS:DTSID="{8B6EDE5C-B714-4332-866D-5A3B8837D9D5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="G2NT_CoinProcess"
+  DTS:PackageType="5"
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{3DCF1793-7AB4-4385-BBEF-DEC309AB9B5B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[build DimFMSFacility table for SSIS.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D2CBD116-5799-4C05-B810-79502E524F6F}"
+      DTS:ObjectName="build DimFMSFacility table for SSIS.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\AnalysisServicesProjects\Finance\sql code\build DimFMSFacility table for SSIS_100915.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.Finance]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{77470317-93E6-4C15-B1F5-9D35B89953E7}"
+      DTS:ObjectName="localhost.Finance">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Finance;Provider=MSOLAP.6;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{FDA21D79-6ECD-4A76-9EA5-26941FFF32FD}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=smtp.va.gov;UseWindowsAuthentication=True;EnableSsl=False;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSIS-create facility_all view.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{BB89F3BA-3C71-4E77-9FFE-6292136B94A1}"
+      DTS:ObjectName="SSIS-create facility_all view.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\AnalysisServicesProjects\Finance\sql code\SSIS-create facility_all view.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ssis-dimfmsfacility cleanup.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9BA7815E-9D71-4092-8606-FF313F2BF890}"
+      DTS:ObjectName="ssis-dimfmsfacility cleanup.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="c:\AnalysisServicesProjects\Finance\sql code\ssis-dimfmsfacility cleanup.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSIS-DROP FACILITY ALL VIEW.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{A7AEFB9D-F902-4166-97CB-7CFF87FD3A13}"
+      DTS:ObjectName="SSIS-DROP FACILITY ALL VIEW.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\AnalysisServicesProjects\Finance\sql code\SSIS-DROP FACILITY ALL VIEW.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[synch bi17 Finance cubes to bi20.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{B28AF6F7-12B3-46EE-89F5-978F62E7B6B9}"
+      DTS:ObjectName="synch bi17 Finance cubes to bi20.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="c:\AnalysisServicesProjects\Finance\synch bi17 Finance cubes to bi20.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[vhaausbi11.vha.med.va.gov.Finance]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B0A5AD9F-572F-4498-9A7E-138C504C24C9}"
+      DTS:ObjectName="vhaausbi11.vha.med.va.gov.Finance">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=vhaausbi11.vha.med.va.gov;Initial Catalog=Finance;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[vhaausbi17.Finance]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+      DTS:ObjectName="vhaausbi17.Finance">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=vhaausbi17.vha.med.va.gov;Initial Catalog=Finance;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Combined Package-{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}vhaaacdw06.Finance;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[vhaausbi17.vha.med.va.gov.Finance]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{21E6B1B5-7FD7-4AAF-A444-B3EA71C62344}"
+      DTS:ObjectName="vhaausbi17.vha.med.va.gov.Finance">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Data Source=vhaausbi17.vha.med.va.gov;Initial Catalog=Finance;Provider=MSOLAP.6;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[vhaausbi20.vha.med.va.gov.Finance]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{01D6C61F-BA47-4F5E-885C-31F1D12E3665}"
+      DTS:ObjectName="vhaausbi20.vha.med.va.gov.Finance">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Data Source=10.226.15.27;Initial Catalog=Finance;Provider=MSOLAP.6;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[vhaausbi20.vha.med.va.gov.Finance 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{19496D35-787B-4013-9CFA-B414D5F1CE90}"
+      DTS:ObjectName="vhaausbi20.vha.med.va.gov.Finance 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=vhaausbi20.vha.med.va.gov;Initial Catalog=Finance;Provider=MSOLAP.8;Integrated Security=SSPI;Extended Properties=Format = Tabular;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Build DimFMSFacility"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{5a7c370f-6e2d-4c53-9724-1bb74c7c5254}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Build DimFMSFacility">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Build DimFMSFacility\clean up facility table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0e23410c-1c5a-45f5-89b9-c23317f56947}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="clean up facility table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="ssis-dimfmsfacility cleanup.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Build DimFMSFacility\create VIEW Facility_ALL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{eef6bef7-8ee7-4bce-9244-bd41b4f46ee7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="create VIEW Facility_ALL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="SSIS-create facility_all view.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Build DimFMSFacility\Drop facility tables"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{379ba14b-e824-4724-819c-c35d8ac1b960}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop facility tables"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="SSIS-DROP FACILITY ALL VIEW.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Build DimFMSFacility\update DimFMSFacility"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{55b52dbc-3ef0-4466-bfcd-691e8b4e62cd}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="update DimFMSFacility"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="build DimFMSFacility table for SSIS.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Build DimFMSFacility.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{c730df83-8ba8-4ed8-ae8c-ce584b02640d}"
+          DTS:From="Package\Build DimFMSFacility\Drop facility tables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Build DimFMSFacility\create VIEW Facility_ALL" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Build DimFMSFacility.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{8b1d3d3d-048a-4662-b880-3d2728d5a68e}"
+          DTS:From="Package\Build DimFMSFacility\create VIEW Facility_ALL"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Build DimFMSFacility\update DimFMSFacility" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Build DimFMSFacility.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{c8d57548-7bba-4093-9bf3-ee26f5a0d27f}"
+          DTS:From="Package\Build DimFMSFacility\update DimFMSFacility"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Build DimFMSFacility\clean up facility table" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Build DimG2NTVACC DimFMSBOC"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{08198065-80be-4479-9bc2-6c5f9c59bde0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Build DimG2NTVACC DimFMSBOC">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC\CREATE VIEW BOC_ALL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{421e3486-a2ba-43ed-b6c1-e488d531ae8c}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CREATE VIEW BOC_ALL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="&#xA;&#xA;create VIEW dbo.BOC_ALL &#xA;AS SELECT DISTINCT BOCID&#xA;FROM          dbo.FactFMS_ALL_VW&#xA;UNION ALL&#xA;SELECT DISTINCT BOCID&#xA;FROM  dbo.FactG2NT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC\delete from FactCOIN134 sta values of 999"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{93f0da93-2927-4b16-a1c1-9b72d115b404}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="delete from FactCOIN134 sta values of 999"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DELETE FROM FactCOIN134&#xA;WHERE     (Sta6aID in ('998', '999'))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC\DROP TABLES IF EXIST"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{aeeda9c3-0f09-46ca-8c2b-e57c4aa05630}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DROP TABLES IF EXIST"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="IF EXISTS (SELECT     *&#xA;                        FROM         sysobjects&#xA;                        WHERE     Type = 'U' AND Name = 'DimG2NTVACC') &#xA;BEGIN DROP TABLE dbo.DimG2NTVACC END&#xA;&#xA; IF EXISTS&#xA;    (SELECT     *&#xA;      FROM          sysobjects&#xA;      WHERE      Type = 'U' AND Name = 'combosVACC') &#xA;BEGIN DROP TABLE dbo.combosVACC END &#xA;&#xA;IF EXISTS&#xA;    (SELECT     *&#xA;      FROM          sysobjects&#xA;      WHERE      Type = 'U' AND Name = 'DimFMSBOC') &#xA;BEGIN DROP TABLE dbo.DimFMSBOC END&#xA;&#xA; IF EXISTS&#xA;    (SELECT     *&#xA;      FROM          sysobjects&#xA;      WHERE      Type = 'U' AND Name = 'combosBOC') &#xA;BEGIN DROP TABLE dbo.combosBOC END&#xA;&#xA; IF EXISTS&#xA;    (SELECT     *&#xA;      FROM          sys.views&#xA;      WHERE      object_id = OBJECT_ID(N'[dbo].[BOC_ALL]')) &#xA;      DROP VIEW [dbo].[BOC_ALL]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC\Update DimFMSBOC and DimG2NTVACC"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{c47fac01-6d04-45a4-809a-29efd837596a}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update DimFMSBOC and DimG2NTVACC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="SELECT DISTINCT BOCID&#xA;INTO            #combosBOC&#xA;FROM         dbo.BOC_ALL&#xA;&#xA;SELECT     a.BOCID, b.BOCDesc, b.BOCLvl1, b.BOCLvl2, b.BOCLvl3&#xA;INTO            dbo.DimFMSBOC&#xA;FROM         #combosBOC a LEFT JOIN&#xA;vhaausbi1.Dimensions.dbo.DimBOC b ON a.BOCID = b.BOCID&#xA;&#xA;UPDATE    dbo.DimFMSBOC&#xA;SET              BOCDesc = CASE WHEN BOCDesc IS NULL THEN 'Unknown' ELSE BOCDesc END&#xA;&#xA;UPDATE    dbo.DimFMSBOC&#xA;SET              BOCLvl1 = CASE WHEN BOCLvl1 IS NULL THEN 'Unknown' ELSE BOCLvl1 END&#xA;&#xA;UPDATE    dbo.DimFMSBOC&#xA;SET              BOCLvl2 = CASE WHEN BOCLvl2 IS NULL THEN 'Unknown' ELSE BOCLvl2 END&#xA;&#xA;UPDATE    dbo.DimFMSBOC&#xA;SET              BOCLvl3 = CASE WHEN BOCLvl3 IS NULL &#xA;THEN 'Unknown' ELSE BOCLvl3 END&#xA;&#xA;SELECT DISTINCT VACCID&#xA;INTO            #combosVACC&#xA;FROM         dbo.FactG2NT&#xA;&#xA;SELECT     a.VACCID, b.VACCDesc, b.VACCLvl1&#xA;INTO            dbo.DimG2NTVACC&#xA;FROM         #combosVACC a LEFT JOIN&#xA;vhaausbi1.Dimensions.dbo.DimVACC b ON &#xA;a.VACCID = b.VACCID&#xA;&#xA;UPDATE    dbo.DimG2NTVACC&#xA;SET              VACCDesc = CASE WHEN VACCDesc IS NULL &#xA;THEN 'Unknown' ELSE VACCDesc END&#xA;&#xA;UPDATE DimG2NTVACC&#xA;SET VACCLvl1 = CASE when VACCID &gt;= 0 AND VACCID &lt;= 1199 THEN '(1100) General Admin-Central Office' &#xA;WHEN VACCID &gt;= 1200 AND VACCID &lt;= 1299 THEN '(1200) General Counsel-Central Office' &#xA;WHEN VACCID &gt;= 1300 AND VACCID &lt;= 1399 THEN '(1300) Office of Policy and Planning'&#xA;WHEN VACCID &gt;= 1400 AND VACCID &lt;= 1499 THEN '(1400) Asst Sec for HR and Admin'&#xA;WHEN VACCID &gt;= 1500 AND VACCID &lt;= 1599 THEN '(1500) Asst Sec for HR and Admin'&#xA;when VACCID &gt;= 1600 AND VACCID &lt;= 1699 THEN'(1600) Asst Sec for HR and Admin'&#xA;when VACCID &gt;= 1700 AND VACCID &lt;= 1799 THEN'(1700) Asst Sec/Public &amp; Intergovt Affairs'&#xA;when VACCID &gt;= 1800 AND VACCID &lt;= 1899 THEN'(1800) Asst Sec for Management'&#xA;when VACCID &gt;= 1900 AND VACCID &lt;= 1999 THEN'(1900) Asst Sec for Information and Technology'&#xA;when VACCID &gt;= 2000 AND VACCID &lt;= 2499 THEN'(2000) Central Office Staff'&#xA;when VACCID &gt;= 2500 AND VACCID &lt;= 2599 THEN'(2500) Asst Sec for Congrssional Affairs'&#xA;when VACCID &gt;= 2600 AND VACCID &lt;= 2699 THEN'(2600) Pershing Hall'&#xA;when VACCID &gt;= 2900 AND VACCID &lt;= 2999 THEN'(2900) Asst Sec For HR and Admin'&#xA;when VACCID &gt;= 3000 AND VACCID &lt;= 3999 THEN'(3000) VBA'&#xA;when VACCID &gt;= 4000 AND VACCID &lt;= 4999 THEN'(4000) Inspector General'&#xA;when VACCID &gt;= 5000 AND VACCID &lt;= 5999 THEN'(5000) NCA'&#xA;when VACCID &gt;= 6000 AND VACCID &lt;= 6999 THEN'(6000) Revolving Supply Fund'&#xA;when VACCID &gt;= 7000 AND VACCID &lt;= 7999 THEN'(7000) Reserved'&#xA;when VACCID &gt;= 8000 AND VACCID &lt;= 8099 THEN'(8000) Central Office Staff'&#xA;when VACCID &gt;= 8100 AND VACCID &lt;= 8199 THEN'(8100) Research'&#xA;when VACCID &gt;= 8200 AND VACCID &lt;= 8299 THEN'(8200) Direct Medical Care-VA Facilities'&#xA;when VACCID &gt;= 8300 AND VACCID &lt;= 8399 THEN'(8300) Direct Medical Care-Non VA Facilities'&#xA;when VACCID &gt;= 8400 AND VACCID &lt;= 8499 THEN'(8400) Administrative Support'&#xA;when VACCID &gt;= 8500 AND VACCID &lt;= 8599 THEN'(8500) Engineering and Environmental Management Support'&#xA;when VACCID &gt;= 8600 AND VACCID &lt;= 8699 THEN'(8600) Miscellaneous Benefits and Services'&#xA;when VACCID &gt;= 8700 AND VACCID &lt;= 8799 THEN'(8700) Annual Close Processing'&#xA;when VACCID &gt;= 8750 AND VACCID &lt;= 8799 THEN'(8750) VA Health Professional Scholarship'&#xA;when VACCID &gt;= 8800 AND VACCID &lt;= 8899 THEN'(8800) General Post Fund'&#xA;when VACCID &gt;= 8900 AND VACCID &lt;= 8999 THEN'(8900) Revolving Funds'&#xA;when VACCID &gt;= 9000 AND VACCID &lt;= 9199 THEN'(9000) Construction'&#xA;when VACCID &gt;= 9900 AND VACCID &lt;= 9999 THEN'(9900) Revolving Funds'&#xA;ELSE VACCLvl1 END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{3e624f09-d54e-4144-9478-acbac4f6e69d}"
+          DTS:From="Package\Build DimG2NTVACC DimFMSBOC\DROP TABLES IF EXIST"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Build DimG2NTVACC DimFMSBOC\CREATE VIEW BOC_ALL" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{a86e6ba6-a889-4cf3-b399-0c74a0fde8f1}"
+          DTS:From="Package\Build DimG2NTVACC DimFMSBOC\CREATE VIEW BOC_ALL"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Build DimG2NTVACC DimFMSBOC\Update DimFMSBOC and DimG2NTVACC" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{A1A50DB5-0FF6-442F-99F2-74FC7B3509E0}"
+          DTS:From="Package\Build DimG2NTVACC DimFMSBOC\Update DimFMSBOC and DimG2NTVACC"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Build DimG2NTVACC DimFMSBOC\delete from FactCOIN134 sta values of 999" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\COIN - Dimension Tables failed"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{ae9da4b2-bd0c-4337-b4c2-36aebb5f2bdd}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="COIN - Dimension Tables failed"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FDA21D79-6ECD-4A76-9EA5-26941FFF32FD}"
+          SendMailTask:From="VSSC_Finance@va.gov"
+          SendMailTask:To="Matthew.Richardson@va.gov"
+          SendMailTask:Subject="COIN - Dimension Tables failed"
+          SendMailTask:MessageSource="COIN - Dimension Tables failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\COIN Cube Processing Failed"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{8bc00e8a-88a2-42f8-8559-2f33c59d514f}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="COIN Cube Processing Failed"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FDA21D79-6ECD-4A76-9EA5-26941FFF32FD}"
+          SendMailTask:From="VSSC_Finance@va.gov"
+          SendMailTask:To="Matthew.Richardson@va.gov"
+          SendMailTask:Subject="COIN Cube Processing Failed"
+          SendMailTask:MessageSource="COIN Cube Processing Failed " xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\G2NT Cube Processing Failed"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{37874e6d-d6b3-402e-aaee-60c1ecde815f}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="G2NT Cube Processing Failed"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FDA21D79-6ECD-4A76-9EA5-26941FFF32FD}"
+          SendMailTask:From="VSSC_Finance@va.gov"
+          SendMailTask:To="Matthew.Richardson@va.gov"
+          SendMailTask:Subject="G2NT Cube Processing Failed"
+          SendMailTask:MessageSource="G2NT Cube Processing Failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\G2NT- Dimension tables failed"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{16a9d380-027f-40b6-9ee4-24e7119e9da1}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="G2NT- Dimension tables failed"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FDA21D79-6ECD-4A76-9EA5-26941FFF32FD}"
+          SendMailTask:From="VSSC_Finance@va.gov"
+          SendMailTask:To="Matthew.Richardson@va.gov"
+          SendMailTask:Subject="G2NT- Dimension tables failed"
+          SendMailTask:MessageSource="G2NT- Dimension tables failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\G2NT- DimFMSFacility failed"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{40090190-8789-4f68-9a86-f4047239b8a7}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="G2NT- DimFMSFacility failed"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FDA21D79-6ECD-4A76-9EA5-26941FFF32FD}"
+          SendMailTask:From="VSSC_Finance@va.gov"
+          SendMailTask:To="Matthew.Richardson@va.gov"
+          SendMailTask:Subject="G2NT- DimFMSFacility failed"
+          SendMailTask:MessageSource="G2NT- DimFMSFacility failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\G2NT_Coin Failed"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{83845dcf-dc00-49aa-9a7d-5b681c4e0b52}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="G2NT_Coin Failed"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="5">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FDA21D79-6ECD-4A76-9EA5-26941FFF32FD}"
+          SendMailTask:From="VSSC_Finance@va.gov"
+          SendMailTask:To="Matthew.Richardson@va.gov"
+          SendMailTask:Subject="FINANCE SYNCH TO DW20"
+          SendMailTask:MessageSource="Failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\G2NT_Coin Successful"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{27b21faa-3724-4d12-87c1-c49c9872c2af}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="G2NT_Coin Successful"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="6">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FDA21D79-6ECD-4A76-9EA5-26941FFF32FD}"
+          SendMailTask:From="VSSC_Finance@va.gov"
+          SendMailTask:To="Julia.Delahoussaye@va.gov; Deborah.Wheeler@va.gov"
+          SendMailTask:CC="Karen.Schmehl@va.gov; luann.ingram2@va.gov; reich.normane@va.gov"
+          SendMailTask:BCC="Matthew.Richardson@va.gov"
+          SendMailTask:Subject="Bi_weekly G2NT/Coin cubes"
+          SendMailTask:MessageSource="Please be advised the processing for the G2NT and COIN processing for the most recent pay period has completed successfully. Please let us know if there are any question Thank you. VSSC Finance" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{25B981A8-FB61-4D8B-A8F5-5031BC61DFA2}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Analysis Services Execute DDL Task(BACKUP)"
+          DTS:CreationName="Microsoft.ASExecuteDDLTask"
+          DTS:Description="Analysis Services Execute DDL Task"
+          DTS:DTSID="{7a6da197-a2cb-47d8-82f7-e98060d34c99}"
+          DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Analysis Services Execute DDL Task(BACKUP)"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASDdlData
+              ConnectionName="localhost.Finance"
+              SourceType="DirectInput"
+              Source="&lt;Backup xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&#xA;&lt;Object&gt;&#xA;  &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;&lt;/Object&gt;&#xA;&lt;File&gt;\\vhaausbi20\ReleaseCubeBackups$\Finance.abf&lt;/File&gt;&#xA;&lt;AllowOverwrite&gt;true&lt;/AllowOverwrite&gt;&#xA;&lt;ApplyCompression&gt;false&lt;/ApplyCompression&gt;&#xA;&lt;/Backup&gt;&#xA;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Analysis Services Execute DDL Task(RESTORE)"
+          DTS:CreationName="Microsoft.ASExecuteDDLTask"
+          DTS:Description="Analysis Services Execute DDL Task"
+          DTS:DTSID="{a737306c-458c-47c6-8fd1-96066fad2f21}"
+          DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Analysis Services Execute DDL Task(RESTORE)"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASDdlData
+              ConnectionName="vhaausbi20.vha.med.va.gov.Finance"
+              SourceType="DirectInput"
+              Source="&lt;Restore xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&#xA;&lt;File&gt;R:\ReleaseCubeBackups\Finance.abf&lt;/File&gt;&#xA;&lt;DatabaseName&gt;Finance&lt;/DatabaseName&gt;&#xA;&lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;&lt;AllowOverwrite&gt;true&lt;/AllowOverwrite&gt;&#xA;&lt;Security&gt;IgnoreSecurity&lt;/Security&gt;&#xA;&lt;DbStorageLocation xmlns=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot;&gt;D:\OLAP\Data\&lt;/DbStorageLocation&gt;&#xA;&lt;/Restore&gt;&#xA;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 3 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{207dffef-c541-4daf-91ad-033462907b1d}"
+          DTS:From="Package\Sequence Container\Analysis Services Execute DDL Task(BACKUP)"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3 1"
+          DTS:To="Package\Sequence Container\Analysis Services Execute DDL Task(RESTORE)" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Add Non-Cum Fields"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{c6c32270-4d6d-4b09-832b-4e33074273f3}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Add Non-Cum Fields">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{e71a20a1-ecb2-476e-8436-db9464dd0044}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Finance Coin134 bi20"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+          { (  [CoinType].[CoinType].[Type Desc].&amp;[NonCum]) } 
+          ON COLUMNS ,
+
+          ([Facility].[Facility District].[VISN District].MEMBERs
+,[Facility].[Sta6a ID].[Sta6a ID].members
+           ,[Coin Period].[Pay Period].[Pay Period].members  
+           ,[Measures].[Total FTE] ) ON ROWS
+ 
+FROM [Coin134]  
+WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;[V23] )</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[vhaausbi20.vha.med.va.gov.Finance 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[vhaausbi20.vha.med.va.gov.Finance 1]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]]"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]]"
+                          name="[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Measures].[MeasuresLevel].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[Measures].[MeasuresLevel].[MEMBER_CAPTION]]"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Measures].[MeasuresLevel].[MEMBER_CAPTION]]"
+                          name="[Measures].[MeasuresLevel].[MEMBER_CAPTION]"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[CoinType].[CoinType].[Type Desc].&amp;[NonCum]]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[CoinType].[CoinType].[Type Desc].&amp;[NonCum]]"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[CoinType].[CoinType].[Type Desc].&amp;[NonCum]]"
+                          name="[CoinType].[CoinType].[Type Desc].&amp;[NonCum]"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]]"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]]"
+                          name="[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]]"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]]"
+                          name="[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          length="255"
+                          name="[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]" />
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[Measures].[MeasuresLevel].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          length="255"
+                          name="[Measures].[MeasuresLevel].[MEMBER_CAPTION]" />
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[CoinType].[CoinType].[Type Desc].&amp;[NonCum]]"
+                          dataType="wstr"
+                          length="255"
+                          name="[CoinType].[CoinType].[Type Desc].&amp;[NonCum]" />
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          length="255"
+                          name="[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]" />
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].ExternalColumns[[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          length="255"
+                          name="[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]]"
+                          name="[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]]"
+                          name="[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]]"
+                          name="[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[Measures].[MeasuresLevel].[MEMBER_CAPTION]]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[Measures].[MeasuresLevel].[MEMBER_CAPTION]]"
+                          name="[Measures].[MeasuresLevel].[MEMBER_CAPTION]" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[CoinType].[CoinType].[Type Desc].&amp;[NonCum]]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Error Output].Columns[[CoinType].[CoinType].[Type Desc].&amp;[NonCum]]"
+                          name="[CoinType].[CoinType].[Type Desc].&amp;[NonCum]" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Finance Coin134_NonCum_Raw bi17"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Coin134_NonCum_Raw_V2]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[vhaausbi17.Finance]"
+                      connectionManagerRefId="Package.ConnectionManagers[vhaausbi17.Finance]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].Columns[[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[VISN]"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Facility].[Facility District].[VISN District].[MEMBER_CAPTION]]" />
+                        <inputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].Columns[[CoinType].[CoinType].[Type Desc].&amp;[NonCum]]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="[CoinType].[CoinType].[Type Desc].&amp;[NonCum]"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[NonCum]"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[CoinType].[CoinType].[Type Desc].&amp;[NonCum]]" />
+                        <inputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].Columns[[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[PayPeriod]"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Coin Period].[Pay Period].[Pay Period].[MEMBER_CAPTION]]" />
+                        <inputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].Columns[[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[STA6AID]"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Facility].[Sta6a ID].[Sta6a ID].[MEMBER_CAPTION]]" />
+                        <inputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].Columns[[Measures].[MeasuresLevel].[MEMBER_CAPTION]]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="[Measures].[MeasuresLevel].[MEMBER_CAPTION]"
+                          externalMetadataColumnId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[Measure]"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output].Columns[[Measures].[MeasuresLevel].[MEMBER_CAPTION]]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[VISN]"
+                          dataType="wstr"
+                          length="255"
+                          name="VISN" />
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[NonCum]"
+                          dataType="wstr"
+                          length="255"
+                          name="NonCum" />
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[PayPeriod]"
+                          dataType="wstr"
+                          length="255"
+                          name="PayPeriod" />
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[STA6AID]"
+                          dataType="wstr"
+                          length="255"
+                          name="STA6AID" />
+                        <externalMetadataColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input].ExternalColumns[Measure]"
+                          dataType="wstr"
+                          length="255"
+                          name="Measure" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17.Paths[OLE DB Source Output]"
+                  endId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update Add Non-Cum Fields\Execute usp_Coin134_Fact_Copy"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b4f3851e-fa1a-4a9a-a624-e1102b3f3482}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute usp_Coin134_Fact_Copy"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B0A5AD9F-572F-4498-9A7E-138C504C24C9}"
+              SQLTask:SqlStatementSource="Execute dbo.usp_Coin134_Fact_Copy;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update Add Non-Cum Fields\Execute usp_Coin134_NonCum"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{62ae8f4c-3ad7-4347-807c-cdd53c5af637}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute usp_Coin134_NonCum"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:SqlStatementSource="Execute dbo.usp_Coin134_NonCumV3;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update Add Non-Cum Fields\Truncate Table Coin134_NonCum_Raw bi17"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{58f2d81e-e1cc-4cbb-b5eb-ea6f8e06179b}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Table Coin134_NonCum_Raw bi17"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:SqlStatementSource="Truncate Table dbo.Coin134_NonCum_Raw_V2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update Add Non-Cum Fields.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{a30d3dd2-9043-41c8-9e9c-3085b5ad1b81}"
+          DTS:From="Package\Update Add Non-Cum Fields\Truncate Table Coin134_NonCum_Raw bi17"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update Add Non-Cum Fields.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{9f7fedc9-0f25-4d34-9642-b0a0072bf2bf}"
+          DTS:From="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Update Add Non-Cum Fields\Execute usp_Coin134_NonCum" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update Add Non-Cum Fields.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{acd325ae-2f42-487e-860d-e024aa055cbc}"
+          DTS:From="Package\Update Add Non-Cum Fields\Execute usp_Coin134_NonCum"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Update Add Non-Cum Fields\Execute usp_Coin134_Fact_Copy" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update COIN Dimension tables"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{a13e941d-1427-4d5c-889e-962af01e2df8}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update COIN Dimension tables">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Update COIN Dimension tables\DROP DimCOINVACC combosVACC"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8c822972-35ab-4480-a5e2-03025e2576ed}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DROP DimCOINVACC combosVACC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="&#xA;IF EXISTS (SELECT     *&#xA;                FROM         sysobjects&#xA;                 WHERE     Type = 'U' AND Name = 'DimCOINVACC') &#xA;                 BEGIN DROP TABLE dbo.DimCOINVACC END &#xA;&#xA;IF EXISTS&#xA;    (SELECT     *&#xA;      FROM          sysobjects&#xA;      WHERE      Type = 'U' AND Name = 'combosVACC')&#xA;    BEGIN DROP TABLE dbo.combosVACC END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update COIN Dimension tables\update DimCOINVACC"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{135f2619-c5a5-4f81-9b6c-45f6f9cafbb0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="update DimCOINVACC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="SELECT DISTINCT VACCID&#xA;INTO            #combosVACC&#xA;FROM         dbo.FactCOIN134&#xA;&#xA;SELECT     a.VACCID, b.VACCDesc, b.VACCLvl1&#xA;INTO            dbo.DimCOINVACC&#xA;FROM         #combosVACC a LEFT JOIN&#xA;vhaausbi1.Dimensions.dbo.DimVACC AS  b ON a.VACCID = b.VACCID&#xA;&#xA;UPDATE    dbo.DimCOINVACC&#xA;SET              VACCDesc = CASE WHEN VACCDesc IS NULL THEN 'Unknown' ELSE VACCDesc END&#xA;&#xA;&#xA;&#xA;&#xA;UPDATE DimCOINVACC&#xA;SET VACCLvl1 = CASE when VACCID &gt;= 0 AND VACCID &lt;= 1199 THEN '(1100) General Admin-Central Office' &#xA;WHEN VACCID &gt;= 1200 AND VACCID &lt;= 1299 THEN '(1200) General Counsel-Central Office' &#xA;WHEN VACCID &gt;= 1300 AND VACCID &lt;= 1399 THEN '(1300) Office of Policy and Planning'&#xA;WHEN VACCID &gt;= 1400 AND VACCID &lt;= 1499 THEN '(1400) Asst Sec for HR and Admin'&#xA;WHEN VACCID &gt;= 1500 AND VACCID &lt;= 1599 THEN '(1500) Asst Sec for HR and Admin'&#xA;when VACCID &gt;= 1600 AND VACCID &lt;= 1699 THEN'(1600) Asst Sec for HR and Admin'&#xA;when VACCID &gt;= 1700 AND VACCID &lt;= 1799 THEN'(1700) Asst Sec/Public &amp; Intergovt Affairs'&#xA;when VACCID &gt;= 1800 AND VACCID &lt;= 1899 THEN'(1800) Asst Sec for Management'&#xA;when VACCID &gt;= 1900 AND VACCID &lt;= 1999 THEN'(1900) Asst Sec for Information and Technology'&#xA;when VACCID &gt;= 2000 AND VACCID &lt;= 2499 THEN'(2000) Central Office Staff'&#xA;when VACCID &gt;= 2500 AND VACCID &lt;= 2599 THEN'(2500) Asst Sec for Congrssional Affairs'&#xA;when VACCID &gt;= 2600 AND VACCID &lt;= 2699 THEN'(2600) Pershing Hall'&#xA;when VACCID &gt;= 2900 AND VACCID &lt;= 2999 THEN'(2900) Asst Sec For HR and Admin'&#xA;when VACCID &gt;= 3000 AND VACCID &lt;= 3999 THEN'(3000) VBA'&#xA;when VACCID &gt;= 4000 AND VACCID &lt;= 4999 THEN'(4000) Inspector General'&#xA;when VACCID &gt;= 5000 AND VACCID &lt;= 5999 THEN'(5000) NCA'&#xA;when VACCID &gt;= 6000 AND VACCID &lt;= 6999 THEN'(6000) Revolving Supply Fund'&#xA;when VACCID &gt;= 7000 AND VACCID &lt;= 7999 THEN'(7000) Reserved'&#xA;when VACCID &gt;= 8000 AND VACCID &lt;= 8099 THEN'(8000) Central Office Staff'&#xA;when VACCID &gt;= 8100 AND VACCID &lt;= 8199 THEN'(8100) Research'&#xA;when VACCID &gt;= 8200 AND VACCID &lt;= 8299 THEN'(8200) Direct Medical Care-VA Facilities'&#xA;when VACCID &gt;= 8300 AND VACCID &lt;= 8399 THEN'(8300) Direct Medical Care-Non VA Facilities'&#xA;when VACCID &gt;= 8400 AND VACCID &lt;= 8499 THEN'(8400) Administrative Support'&#xA;when VACCID &gt;= 8500 AND VACCID &lt;= 8599 THEN'(8500) Engineering and Environmental Management Support'&#xA;when VACCID &gt;= 8600 AND VACCID &lt;= 8699 THEN'(8600) Miscellaneous Benefits and Services'&#xA;when VACCID &gt;= 8700 AND VACCID &lt;= 8799 THEN'(8700) Annual Close Processing'&#xA;when VACCID &gt;= 8750 AND VACCID &lt;= 8799 THEN'(8750) VA Health Professional Scholarship'&#xA;when VACCID &gt;= 8800 AND VACCID &lt;= 8899 THEN'(8800) General Post Fund'&#xA;when VACCID &gt;= 8900 AND VACCID &lt;= 8999 THEN'(8900) Revolving Funds'&#xA;when VACCID &gt;= 9000 AND VACCID &lt;= 9199 THEN'(9000) Construction'&#xA;when VACCID &gt;= 9900 AND VACCID &lt;= 9999 THEN'(9900) Revolving Funds'&#xA;ELSE VACCLvl1 END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update COIN Dimension tables.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8d76b90c-661d-47ff-94e1-b2d925ee016b}"
+          DTS:From="Package\Update COIN Dimension tables\DROP DimCOINVACC combosVACC"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Update COIN Dimension tables\update DimCOINVACC" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update COIN Dimensions and cube"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{3d5854ac-00b0-48f0-b084-3071aec53ba6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update COIN Dimensions and cube">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Update COIN Dimensions and cube\Process Cube"
+          DTS:CreationName="Microsoft.DTSProcessingTask"
+          DTS:Description="Analysis Services Processing Task"
+          DTS:DTSID="{4fb6c6cb-58c1-4d4a-aa6c-85ca68e454b6}"
+          DTS:ExecutableType="Microsoft.DTSProcessingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process Cube"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASProcessingData
+              ConnectionName="vhaausbi17.vha.med.va.gov.Finance"
+              ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;CubeID&gt;Coin134&lt;/CubeID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;&lt;/Batch&gt;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update COIN Dimensions and cube\Process Dimensions"
+          DTS:CreationName="Microsoft.DTSProcessingTask"
+          DTS:Description="Analysis Services Processing Task"
+          DTS:DTSID="{ecc0f09d-a130-42b4-bfeb-cbb7e52a25e2}"
+          DTS:ExecutableType="Microsoft.DTSProcessingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process Dimensions"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASProcessingData
+              ConnectionName="vhaausbi17.vha.med.va.gov.Finance"
+              ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;CoinType&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;Coin Period&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;PAID Fund Grp&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;VA Cost Ctr COIN&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;PPeriod&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;&lt;/Batch&gt;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update COIN Dimensions and cube.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{89d3f16d-8cdb-4230-b18c-021a9643bd32}"
+          DTS:From="Package\Update COIN Dimensions and cube\Process Dimensions"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Update COIN Dimensions and cube\Process Cube" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update G2NT Dimensions and Cube"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{d88daf8a-e013-41d4-9501-069b0f76878d}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update G2NT Dimensions and Cube">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Update G2NT Dimensions and Cube\Delete old FY records"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3d4f00f2-e2a2-45f0-8363-669804ab495b}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete old FY records"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
+              SQLTask:SqlStatementSource="delete from  dbo.FACTG2NT where FY &lt; 2016" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update G2NT Dimensions and Cube\Process G2nt Cube"
+          DTS:CreationName="Microsoft.DTSProcessingTask"
+          DTS:Description="Analysis Services Processing Task"
+          DTS:DTSID="{308fdb22-2ad4-435f-8943-e2590d0dcc29}"
+          DTS:ExecutableType="Microsoft.DTSProcessingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process G2nt Cube"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASProcessingData
+              ConnectionName="vhaausbi17.vha.med.va.gov.Finance"
+              ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;CubeID&gt;PAID_GROSS2NT&lt;/CubeID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;&lt;/Batch&gt;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update G2NT Dimensions and Cube\PROCESS G2NT DIMENSIONS"
+          DTS:CreationName="Microsoft.DTSProcessingTask"
+          DTS:Description="Analysis Services Processing Task"
+          DTS:DTSID="{94ae9840-36b2-42ef-b3d7-6baa6447747b}"
+          DTS:ExecutableType="Microsoft.DTSProcessingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PROCESS G2NT DIMENSIONS"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASProcessingData
+              ConnectionName="vhaausbi17.vha.med.va.gov.Finance"
+              ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;VA Cost Ctr PAID&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessUpdate&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;PAID Fund Grp&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessUpdate&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;VA BOC&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessUpdate&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;Facility&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessUpdate&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot; xmlns:ddl300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300&quot; xmlns:ddl300_300=&quot;http://schemas.microsoft.com/analysisservices/2011/engine/300/300&quot; xmlns:ddl400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400&quot; xmlns:ddl400_400=&quot;http://schemas.microsoft.com/analysisservices/2012/engine/400/400&quot; xmlns:ddl500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500&quot; xmlns:ddl500_500=&quot;http://schemas.microsoft.com/analysisservices/2013/engine/500/500&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Finance&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;PPeriod&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessUpdate&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;&lt;/Batch&gt;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update G2NT Dimensions and Cube.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{a37e7247-3321-4071-850e-6e212562689b}"
+          DTS:From="Package\Update G2NT Dimensions and Cube\PROCESS G2NT DIMENSIONS"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Update G2NT Dimensions and Cube\Process G2nt Cube" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update G2NT Dimensions and Cube.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{3d23120e-4ef8-4045-82c4-2e0119c2e30c}"
+          DTS:From="Package\Update G2NT Dimensions and Cube\Delete old FY records"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Update G2NT Dimensions and Cube\PROCESS G2NT DIMENSIONS" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{82C48FDE-0FB6-48B5-9BC6-9B0D83B3DA27}"
+      DTS:From="Package\Build DimFMSFacility"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Build DimG2NTVACC DimFMSBOC" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{FEC3C64E-8956-4D0B-9726-39C97CF69B15}"
+      DTS:From="Package\Build DimFMSFacility"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\G2NT- DimFMSFacility failed"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{F5B5D157-9641-4E02-90D2-877EBC42AF38}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\G2NT_Coin Successful" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{0A021DF3-7DAB-4668-8CC8-44B03E142113}"
+      DTS:From="Package\Build DimG2NTVACC DimFMSBOC"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\Update Add Non-Cum Fields" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 12]"
+      DTS:CreationName=""
+      DTS:DTSID="{745A6455-195D-4A26-90A6-CFCAFB0B2717}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 12"
+      DTS:To="Package\G2NT_Coin Failed"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{DA2DBD63-7A04-411E-A192-309F99CFCB0E}"
+      DTS:From="Package\Build DimG2NTVACC DimFMSBOC"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\G2NT- Dimension tables failed"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{E935617A-4E1C-4F68-B4DD-6237A3EBEAE2}"
+      DTS:From="Package\Update G2NT Dimensions and Cube"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update COIN Dimensions and cube" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{2D06B395-05AB-4A53-911D-61D14DCEC03A}"
+      DTS:From="Package\Update Add Non-Cum Fields"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Update COIN Dimension tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{031D1BCF-8CF1-48BB-AE58-6EB2DAF8E571}"
+      DTS:From="Package\Update COIN Dimension tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\COIN - Dimension Tables failed"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{9BF15D48-4BB8-4956-8ACC-3299297F5FA5}"
+      DTS:From="Package\Update COIN Dimensions and cube"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{4AA51251-8EF6-4103-87D1-FC7A0D5FD39F}"
+      DTS:From="Package\Update G2NT Dimensions and Cube"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\G2NT Cube Processing Failed"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{A6B11150-FABC-455B-BF5F-E719EC3342E2}"
+      DTS:From="Package\Update COIN Dimension tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Update G2NT Dimensions and Cube" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{34846924-084C-41C9-8AE2-80E45A98F85E}"
+      DTS:From="Package\Update COIN Dimensions and cube"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\COIN Cube Processing Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Build DimFMSFacility\clean up facility table"
+          TopLeft="35,210.5" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Build DimFMSFacility\create VIEW Facility_ALL"
+          TopLeft="21,72.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Build DimFMSFacility\Drop facility tables"
+          TopLeft="32.5,5.5" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Build DimFMSFacility\update DimFMSFacility"
+          TopLeft="28,139.5" />
+        <EdgeLayout
+          Id="Package\Build DimFMSFacility.PrecedenceConstraints[Constraint]"
+          TopLeft="118,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build DimFMSFacility.PrecedenceConstraints[Constraint 1]"
+          TopLeft="121.5,114.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build DimFMSFacility.PrecedenceConstraints[Constraint 2]"
+          TopLeft="123.5,181.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="226,276"
+          Size="226,319"
+          Id="Package\Build DimFMSFacility"
+          TopLeft="36,89" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\CREATE VIEW BOC_ALL"
+          TopLeft="53,74.5" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\delete from FactCOIN134 sta values of 999"
+          TopLeft="11.5,222.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\DROP TABLES IF EXIST"
+          TopLeft="51,5.5" />
+        <NodeLayout
+          Size="269,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Update DimFMSBOC and DimG2NTVACC"
+          TopLeft="16.5,143.5" />
+        <EdgeLayout
+          Id="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint]"
+          TopLeft="147.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint 1]"
+          TopLeft="150,116.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint 2]"
+          TopLeft="151.75,185.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="296,281"
+          Size="296,324"
+          Id="Package\Build DimG2NTVACC DimFMSBOC"
+          TopLeft="293,91" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\COIN - Dimension Tables failed"
+          TopLeft="1243,37" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\COIN Cube Processing Failed"
+          TopLeft="1431,496" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\G2NT Cube Processing Failed"
+          TopLeft="1269,199" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\G2NT- Dimension tables failed"
+          TopLeft="325,464" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\G2NT- DimFMSFacility failed"
+          TopLeft="41,456" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\G2NT_Coin Failed"
+          TopLeft="1395,857" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\G2NT_Coin Successful"
+          TopLeft="1175,859" />
+        <NodeLayout
+          Size="293,42"
+          Id="Package\Sequence Container\Analysis Services Execute DDL Task(BACKUP)"
+          TopLeft="5.5,6.5" />
+        <NodeLayout
+          Size="300,42"
+          Id="Package\Sequence Container\Analysis Services Execute DDL Task(RESTORE)"
+          TopLeft="4.5,72.5" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3 1]"
+          TopLeft="153.25,48.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="310,126"
+          Size="310,169"
+          Id="Package\Sequence Container"
+          TopLeft="1173,596" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17"
+          TopLeft="40,96.5" />
+        <NodeLayout
+          Size="235,43"
+          Id="Package\Update Add Non-Cum Fields\Execute usp_Coin134_Fact_Copy"
+          TopLeft="39,255" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Update Add Non-Cum Fields\Execute usp_Coin134_NonCum"
+          TopLeft="40,171" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Update Add Non-Cum Fields\Truncate Table Coin134_NonCum_Raw bi17"
+          TopLeft="40,22" />
+        <EdgeLayout
+          Id="Package\Update Add Non-Cum Fields.PrecedenceConstraints[Constraint]"
+          TopLeft="153,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.5"
+              Start="0,0"
+              End="0,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update Add Non-Cum Fields.PrecedenceConstraints[Constraint 1]"
+          TopLeft="153,138.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.5"
+              Start="0,0"
+              End="0,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update Add Non-Cum Fields.PrecedenceConstraints[Constraint 2]"
+          TopLeft="154.666666666667,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="289,317"
+          Size="289,360"
+          Id="Package\Update Add Non-Cum Fields"
+          TopLeft="626,73.5" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Update COIN Dimension tables\DROP DimCOINVACC combosVACC"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Update COIN Dimension tables\update DimCOINVACC"
+          TopLeft="38.5,78.5" />
+        <EdgeLayout
+          Id="Package\Update COIN Dimension tables.PrecedenceConstraints[Constraint]"
+          TopLeft="129,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="255,135"
+          Size="255,178"
+          Id="Package\Update COIN Dimension tables"
+          TopLeft="945,34" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Update COIN Dimensions and cube\Process Cube"
+          TopLeft="31.5,72.5" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Update COIN Dimensions and cube\Process Dimensions"
+          TopLeft="21.5,4.5" />
+        <EdgeLayout
+          Id="Package\Update COIN Dimensions and cube.PrecedenceConstraints[Constraint]"
+          TopLeft="105,46.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="218,121"
+          Size="218,164"
+          Id="Package\Update COIN Dimensions and cube"
+          TopLeft="1260,298" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Update G2NT Dimensions and Cube\Delete old FY records"
+          TopLeft="38,1" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Update G2NT Dimensions and Cube\Process G2nt Cube"
+          TopLeft="52,144.5" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Update G2NT Dimensions and Cube\PROCESS G2NT DIMENSIONS"
+          TopLeft="21.5,75.5" />
+        <EdgeLayout
+          Id="Package\Update G2NT Dimensions and Cube.PrecedenceConstraints[Constraint]"
+          TopLeft="133.5,117.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update G2NT Dimensions and Cube.PrecedenceConstraints[Constraint 1]"
+          TopLeft="129.5,43">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.5"
+              Start="0,0"
+              End="0,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="270,241"
+          Size="270,284"
+          Id="Package\Update G2NT Dimensions and Cube"
+          TopLeft="949,265" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="262,250.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,0"
+              Start="0,0"
+              End="23.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="148,408">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.24134765625,15.37548828125,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="1277.66666666667,765">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.6666666666667,94"
+              Start="0,0"
+              End="-10.6666666666667,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.8896020539153" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.8896020539153"
+                    Point2="0,37.8896020539153"
+                    Point3="-4,37.8896020539153" />
+                  <mssgle:LineSegment
+                    End="-6.66666666666674,37.8896020539153" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.66666666666674,37.8896020539153"
+                    Point2="-10.6666666666667,37.8896020539153"
+                    Point3="-10.6666666666667,41.8896020539153" />
+                  <mssgle:LineSegment
+                    End="-10.6666666666667,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="589,253.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37,0"
+              Start="0,0"
+              End="29.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="29.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="1378.33333333333,765">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98.1666666666667,92"
+              Start="0,0"
+              End="98.1666666666667,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0834403080873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.0834403080873"
+                    Point2="0,37.0834403080873"
+                    Point3="4,37.0834403080873" />
+                  <mssgle:LineSegment
+                    End="94.1666666666667,37.0834403080873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.1666666666667,37.0834403080873"
+                    Point2="98.1666666666667,37.0834403080873"
+                    Point3="98.1666666666667,41.0834403080873" />
+                  <mssgle:LineSegment
+                    End="98.1666666666667,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.8419856770834,42.0834403080873,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="438.5,415">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.24134765625,15.87548828125,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="1219,407">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41,-27"
+              Start="0,0"
+              End="33.5,-27">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="16.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5,0"
+                    Point2="20.5,0"
+                    Point3="20.5,-4" />
+                  <mssgle:LineSegment
+                    End="20.5,-23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.5,-23"
+                    Point2="20.5,-27"
+                    Point3="24.5,-27" />
+                  <mssgle:LineSegment
+                    End="33.5,-27" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="915,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30,-130.5"
+              Start="0,0"
+              End="22.5,-130.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="11,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11,0"
+                    Point2="15,0"
+                    Point3="15,-4" />
+                  <mssgle:LineSegment
+                    End="15,-126.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15,-126.5"
+                    Point2="15,-130.5"
+                    Point3="19,-130.5" />
+                  <mssgle:LineSegment
+                    End="22.5,-130.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="1200,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43,-65"
+              Start="0,0"
+              End="35.5,-65">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="17.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.5,0"
+                    Point2="21.5,0"
+                    Point3="21.5,-4" />
+                  <mssgle:LineSegment
+                    End="21.5,-61" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.5,-61"
+                    Point2="21.5,-65"
+                    Point3="25.5,-65" />
+                  <mssgle:LineSegment
+                    End="35.5,-65" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="6.25865234375,1,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="1331,462">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,134"
+              Start="0,0"
+              End="0,126.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="1127.66666666667,265">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="249.833333333333,-24"
+              Start="0,0"
+              End="249.833333333333,-16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-5.68483063328424" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-5.68483063328424"
+                    Point2="0,-9.68483063328424"
+                    Point3="4,-9.68483063328424" />
+                  <mssgle:LineSegment
+                    End="245.833333333333,-9.68483063328424" />
+                  <mssgle:CubicBezierSegment
+                    Point1="245.833333333333,-9.68483063328424"
+                    Point2="249.833333333333,-9.68483063328424"
+                    Point3="249.833333333333,-13.6848306332842" />
+                  <mssgle:LineSegment
+                    End="249.833333333333,-16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="109.675319010417,-4.68483063328424,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="1072.5,212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-32.1666666666667,53"
+              Start="0,0"
+              End="-32.1666666666667,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.6126656848306" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.6126656848306"
+                    Point2="0,31.6126656848306"
+                    Point3="-4,31.6126656848306" />
+                  <mssgle:LineSegment
+                    End="-28.1666666666667,31.6126656848306" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-28.1666666666667,31.6126656848306"
+                    Point2="-32.1666666666667,31.6126656848306"
+                    Point3="-32.1666666666667,35.6126656848306" />
+                  <mssgle:LineSegment
+                    End="-32.1666666666667,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="1404,462">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="134.5,34"
+              Start="0,0"
+              End="134.5,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.74863387978142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.74863387978142"
+                    Point2="0,13.7486338797814"
+                    Point3="4,13.7486338797814" />
+                  <mssgle:LineSegment
+                    End="130.5,13.7486338797814" />
+                  <mssgle:CubicBezierSegment
+                    Point1="130.5,13.7486338797814"
+                    Point2="134.5,13.7486338797814"
+                    Point3="134.5,17.7486338797814" />
+                  <mssgle:LineSegment
+                    End="134.5,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="52.00865234375,18.7486338797814,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[vhaausbi20.vha.med.va.gov.Finance]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+  <TaskHost
+    design-time-name="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="252,42"
+          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17"
+          TopLeft="203,234" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20"
+          TopLeft="232,154" />
+        <EdgeLayout
+          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17.Paths[OLE DB Source Output]"
+          TopLeft="325.5,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
