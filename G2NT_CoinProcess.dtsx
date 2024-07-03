@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="G2NT_CoinProcess"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{3DCF1793-7AB4-4385-BBEF-DEC309AB9B5B}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{D488DF75-057A-424C-A90F-2297B7B6D12E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -330,6 +330,22 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC\Truncate Prod dim tables"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E40E01A9-2418-468F-BF44-63200009FFE5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Prod dim tables"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B0A5AD9F-572F-4498-9A7E-138C504C24C9}"
+              SQLTask:SqlStatementSource="truncate table dbo.dimfmsboc&#xA;truncate table dbo.dimg2ntvacc&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Build DimG2NTVACC DimFMSBOC\Update DimFMSBOC and DimG2NTVACC"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -345,6 +361,697 @@
               SQLTask:Connection="{65BDA5B3-C3F9-4065-855F-5F5A0DFCB5F5}"
               SQLTask:BypassPrepare="False"
               SQLTask:SqlStatementSource="SELECT DISTINCT BOCID&#xA;INTO            #combosBOC&#xA;FROM         dbo.BOC_ALL&#xA;&#xA;SELECT     a.BOCID, b.BOCDesc, b.BOCLvl1, b.BOCLvl2, b.BOCLvl3&#xA;INTO            dbo.DimFMSBOC&#xA;FROM         #combosBOC a LEFT JOIN&#xA;vhaausbi1.Dimensions.dbo.DimBOC b ON a.BOCID = b.BOCID&#xA;&#xA;UPDATE    dbo.DimFMSBOC&#xA;SET              BOCDesc = CASE WHEN BOCDesc IS NULL THEN 'Unknown' ELSE BOCDesc END&#xA;&#xA;UPDATE    dbo.DimFMSBOC&#xA;SET              BOCLvl1 = CASE WHEN BOCLvl1 IS NULL THEN 'Unknown' ELSE BOCLvl1 END&#xA;&#xA;UPDATE    dbo.DimFMSBOC&#xA;SET              BOCLvl2 = CASE WHEN BOCLvl2 IS NULL THEN 'Unknown' ELSE BOCLvl2 END&#xA;&#xA;UPDATE    dbo.DimFMSBOC&#xA;SET              BOCLvl3 = CASE WHEN BOCLvl3 IS NULL &#xA;THEN 'Unknown' ELSE BOCLvl3 END&#xA;&#xA;SELECT DISTINCT VACCID&#xA;INTO            #combosVACC&#xA;FROM         dbo.FactG2NT&#xA;&#xA;SELECT     a.VACCID, b.VACCDesc, b.VACCLvl1&#xA;INTO            dbo.DimG2NTVACC&#xA;FROM         #combosVACC a LEFT JOIN&#xA;vhaausbi1.Dimensions.dbo.DimVACC b ON &#xA;a.VACCID = b.VACCID&#xA;&#xA;UPDATE    dbo.DimG2NTVACC&#xA;SET              VACCDesc = CASE WHEN VACCDesc IS NULL &#xA;THEN 'Unknown' ELSE VACCDesc END&#xA;&#xA;UPDATE DimG2NTVACC&#xA;SET VACCLvl1 = CASE when VACCID &gt;= 0 AND VACCID &lt;= 1199 THEN '(1100) General Admin-Central Office' &#xA;WHEN VACCID &gt;= 1200 AND VACCID &lt;= 1299 THEN '(1200) General Counsel-Central Office' &#xA;WHEN VACCID &gt;= 1300 AND VACCID &lt;= 1399 THEN '(1300) Office of Policy and Planning'&#xA;WHEN VACCID &gt;= 1400 AND VACCID &lt;= 1499 THEN '(1400) Asst Sec for HR and Admin'&#xA;WHEN VACCID &gt;= 1500 AND VACCID &lt;= 1599 THEN '(1500) Asst Sec for HR and Admin'&#xA;when VACCID &gt;= 1600 AND VACCID &lt;= 1699 THEN'(1600) Asst Sec for HR and Admin'&#xA;when VACCID &gt;= 1700 AND VACCID &lt;= 1799 THEN'(1700) Asst Sec/Public &amp; Intergovt Affairs'&#xA;when VACCID &gt;= 1800 AND VACCID &lt;= 1899 THEN'(1800) Asst Sec for Management'&#xA;when VACCID &gt;= 1900 AND VACCID &lt;= 1999 THEN'(1900) Asst Sec for Information and Technology'&#xA;when VACCID &gt;= 2000 AND VACCID &lt;= 2499 THEN'(2000) Central Office Staff'&#xA;when VACCID &gt;= 2500 AND VACCID &lt;= 2599 THEN'(2500) Asst Sec for Congrssional Affairs'&#xA;when VACCID &gt;= 2600 AND VACCID &lt;= 2699 THEN'(2600) Pershing Hall'&#xA;when VACCID &gt;= 2900 AND VACCID &lt;= 2999 THEN'(2900) Asst Sec For HR and Admin'&#xA;when VACCID &gt;= 3000 AND VACCID &lt;= 3999 THEN'(3000) VBA'&#xA;when VACCID &gt;= 4000 AND VACCID &lt;= 4999 THEN'(4000) Inspector General'&#xA;when VACCID &gt;= 5000 AND VACCID &lt;= 5999 THEN'(5000) NCA'&#xA;when VACCID &gt;= 6000 AND VACCID &lt;= 6999 THEN'(6000) Revolving Supply Fund'&#xA;when VACCID &gt;= 7000 AND VACCID &lt;= 7999 THEN'(7000) Reserved'&#xA;when VACCID &gt;= 8000 AND VACCID &lt;= 8099 THEN'(8000) Central Office Staff'&#xA;when VACCID &gt;= 8100 AND VACCID &lt;= 8199 THEN'(8100) Research'&#xA;when VACCID &gt;= 8200 AND VACCID &lt;= 8299 THEN'(8200) Direct Medical Care-VA Facilities'&#xA;when VACCID &gt;= 8300 AND VACCID &lt;= 8399 THEN'(8300) Direct Medical Care-Non VA Facilities'&#xA;when VACCID &gt;= 8400 AND VACCID &lt;= 8499 THEN'(8400) Administrative Support'&#xA;when VACCID &gt;= 8500 AND VACCID &lt;= 8599 THEN'(8500) Engineering and Environmental Management Support'&#xA;when VACCID &gt;= 8600 AND VACCID &lt;= 8699 THEN'(8600) Miscellaneous Benefits and Services'&#xA;when VACCID &gt;= 8700 AND VACCID &lt;= 8799 THEN'(8700) Annual Close Processing'&#xA;when VACCID &gt;= 8750 AND VACCID &lt;= 8799 THEN'(8750) VA Health Professional Scholarship'&#xA;when VACCID &gt;= 8800 AND VACCID &lt;= 8899 THEN'(8800) General Post Fund'&#xA;when VACCID &gt;= 8900 AND VACCID &lt;= 8999 THEN'(8900) Revolving Funds'&#xA;when VACCID &gt;= 9000 AND VACCID &lt;= 9199 THEN'(9000) Construction'&#xA;when VACCID &gt;= 9900 AND VACCID &lt;= 9999 THEN'(9900) Revolving Funds'&#xA;ELSE VACCLvl1 END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{46270A61-B0BD-4B55-9C55-90128815CF9D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Prod Dim tables"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DimFMSBOC"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimFMSBOC]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[vhaausbi11.vha.med.va.gov.Finance]"
+                      connectionManagerRefId="Package.ConnectionManagers[vhaausbi11.vha.med.va.gov.Finance]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].Columns[BOCID]"
+                          cachedDataType="wstr"
+                          cachedLength="4"
+                          cachedName="BOCID"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCID]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCID]" />
+                        <inputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].Columns[BOCDesc]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BOCDesc"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCDesc]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCDesc]" />
+                        <inputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].Columns[BOCLvl1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BOCLvl1"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCLvl1]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl1]" />
+                        <inputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].Columns[BOCLvl2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BOCLvl2"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCLvl2]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl2]" />
+                        <inputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].Columns[BOCLvl3]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="65"
+                          cachedName="BOCLvl3"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCLvl3]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl3]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCID]"
+                          dataType="wstr"
+                          length="50"
+                          name="BOCID" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BOCDesc" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCLvl1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BOCLvl1" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCLvl2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BOCLvl2" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input].ExternalColumns[BOCLvl3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="65"
+                          name="BOCLvl3" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DimG2NTVACCID"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimG2NTVACC]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[vhaausbi11.vha.med.va.gov.Finance]"
+                      connectionManagerRefId="Package.ConnectionManagers[vhaausbi11.vha.med.va.gov.Finance]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].Columns[VACCID]"
+                          cachedDataType="i4"
+                          cachedName="VACCID"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].ExternalColumns[VACCID]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCID]" />
+                        <inputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].Columns[VACCDesc]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="VACCDesc"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].ExternalColumns[VACCDesc]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCDesc]" />
+                        <inputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].Columns[VACCLvl1]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="VACCLvl1"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].ExternalColumns[VACCLvl1]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCLvl1]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].ExternalColumns[VACCID]"
+                          dataType="i2"
+                          name="VACCID" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].ExternalColumns[VACCDesc]"
+                          dataType="wstr"
+                          length="100"
+                          name="VACCDesc" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input].ExternalColumns[VACCLvl1]"
+                          dataType="wstr"
+                          length="100"
+                          name="VACCLvl1" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimFMSBOC]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[vhaausbi17.Finance]"
+                      connectionManagerRefId="Package.ConnectionManagers[vhaausbi17.Finance]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCID]"
+                          length="4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCID]"
+                          name="BOCID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCDesc]"
+                          length="50"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCDesc]"
+                          name="BOCDesc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCLvl1]"
+                          length="50"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl1]"
+                          name="BOCLvl1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCLvl2]"
+                          length="50"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl2]"
+                          name="BOCLvl2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl3]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCLvl3]"
+                          length="65"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].Columns[BOCLvl3]"
+                          name="BOCLvl3"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCID]"
+                          dataType="wstr"
+                          length="4"
+                          name="BOCID" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BOCDesc" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCLvl1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BOCLvl1" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCLvl2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BOCLvl2" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BOCLvl3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="65"
+                          name="BOCLvl3" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCID]"
+                          dataType="wstr"
+                          length="4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCID]"
+                          name="BOCID" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCDesc]"
+                          name="BOCDesc" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCLvl1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCLvl1]"
+                          name="BOCLvl1" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCLvl2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCLvl2]"
+                          name="BOCLvl2" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCLvl3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="65"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BOCLvl3]"
+                          name="BOCLvl3" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source 1"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimG2NTVACC]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[vhaausbi17.Finance]"
+                      connectionManagerRefId="Package.ConnectionManagers[vhaausbi17.Finance]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[VACCID]"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCID]"
+                          name="VACCID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCDesc]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[VACCDesc]"
+                          length="100"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCDesc]"
+                          name="VACCDesc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCLvl1]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[VACCLvl1]"
+                          length="100"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[VACCLvl1]"
+                          name="VACCLvl1"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[VACCID]"
+                          dataType="i4"
+                          name="VACCID" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[VACCDesc]"
+                          dataType="wstr"
+                          length="100"
+                          name="VACCDesc" />
+                        <externalMetadataColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[VACCLvl1]"
+                          dataType="wstr"
+                          length="100"
+                          name="VACCLvl1" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[VACCID]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[VACCID]"
+                          name="VACCID" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[VACCDesc]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[VACCDesc]"
+                          name="VACCDesc" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[VACCLvl1]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[VACCLvl1]"
+                          name="VACCLvl1" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables.Paths[OLE DB Source Output]"
+                  endId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables.Paths[OLE DB Source Output1]"
+                  endId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -373,6 +1080,22 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\Build DimG2NTVACC DimFMSBOC\delete from FactCOIN134 sta values of 999" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{1EDBEB5F-7274-4AFB-9DD5-65EF5DB90B22}"
+          DTS:From="Package\Build DimG2NTVACC DimFMSBOC\delete from FactCOIN134 sta values of 999"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Build DimG2NTVACC DimFMSBOC\Truncate Prod dim tables" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{878EF6F8-AB3A-407F-BDDA-51B9E4D79520}"
+          DTS:From="Package\Build DimG2NTVACC DimFMSBOC\Truncate Prod dim tables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -384,7 +1107,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="COIN - Dimension Tables failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -404,7 +1127,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="COIN Cube Processing Failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -424,7 +1147,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT Cube Processing Failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -444,7 +1167,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT- Dimension tables failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -464,7 +1187,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT- DimFMSFacility failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -484,7 +1207,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT_Coin Failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -504,7 +1227,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT_Coin Successful"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -535,7 +1258,7 @@
           DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Analysis Services Execute DDL Task(BACKUP)"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASDdlData
@@ -552,7 +1275,7 @@
           DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Analysis Services Execute DDL Task(RESTORE)"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASDdlData
@@ -1129,7 +1852,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Process Cube"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASProcessingData
@@ -1145,7 +1868,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Process Dimensions"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASProcessingData
@@ -1183,7 +1906,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Delete old FY records"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1199,7 +1922,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Process G2nt Cube"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASProcessingData
@@ -1215,7 +1938,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="PROCESS G2NT DIMENSIONS"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASProcessingData
@@ -1367,7 +2090,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="179,42"
           Id="Package\Build DimFMSFacility\clean up facility table"
@@ -1470,9 +2193,17 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           Id="Package\Build DimG2NTVACC DimFMSBOC\DROP TABLES IF EXIST"
           TopLeft="51,5.5" />
         <NodeLayout
+          Size="197,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Truncate Prod dim tables"
+          TopLeft="59,290" />
+        <NodeLayout
           Size="269,42"
           Id="Package\Build DimG2NTVACC DimFMSBOC\Update DimFMSBOC and DimG2NTVACC"
           TopLeft="16.5,143.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables"
+          TopLeft="61,357" />
         <EdgeLayout
           Id="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint]"
           TopLeft="147.5,47.5">
@@ -1539,13 +2270,57 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint 3]"
+          TopLeft="155,264.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.5"
+              Start="0,0"
+              End="0,18">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build DimG2NTVACC DimFMSBOC.PrecedenceConstraints[Constraint 4]"
+          TopLeft="156.75,332">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="296,281"
-          Size="296,324"
+          PanelSize="299,404"
+          Size="299,448"
           Id="Package\Build DimG2NTVACC DimFMSBOC"
-          TopLeft="293,91" />
+          TopLeft="294,91" />
         <NodeLayout
           Size="226,42"
           Id="Package\COIN - Dimension Tables failed"
@@ -1561,7 +2336,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
         <NodeLayout
           Size="222,42"
           Id="Package\G2NT- Dimension tables failed"
-          TopLeft="325,464" />
+          TopLeft="331,573" />
         <NodeLayout
           Size="212,42"
           Id="Package\G2NT- DimFMSFacility failed"
@@ -1839,18 +2614,30 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           TopLeft="949,265" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="262,250.75">
+          TopLeft="262,248.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31,0"
+              EndConnector="32,66.5"
               Start="0,0"
-              End="23.5,0">
+              End="24.5,66.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="23.5,0" />
+                    End="12,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12,0"
+                    Point2="16,0"
+                    Point3="16,4" />
+                  <mssgle:LineSegment
+                    End="16,62.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16,62.5"
+                    Point2="16,66.5"
+                    Point3="20,66.5" />
+                  <mssgle:LineSegment
+                    End="24.5,66.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1919,18 +2706,30 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="589,253.25">
+          TopLeft="593,315">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="37,0"
+              EndConnector="33,-61.5"
               Start="0,0"
-              End="29.5,0">
+              End="25.5,-61.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="29.5,0" />
+                    End="12.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5,0"
+                    Point2="16.5,0"
+                    Point3="16.5,-4" />
+                  <mssgle:LineSegment
+                    End="16.5,-57.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5,-57.5"
+                    Point2="16.5,-61.5"
+                    Point3="20.5,-61.5" />
+                  <mssgle:LineSegment
+                    End="25.5,-61.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1977,25 +2776,25 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="438.5,415">
+          TopLeft="442.75,539">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49"
+              EndConnector="0,34"
               Start="0,0"
-              End="0,41.5">
+              End="0,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.5" />
+                    End="0,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-15.24134765625,15.87548828125,30.4826953125,9.7490234375"
+              BoundingBox="-15.24134765625,8.37548828125,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2238,6 +3037,138 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
     design-time-name="Package.ConnectionManagers[vhaausbi20.vha.med.va.gov.Finance]">
     <ProjectReferenceName></ProjectReferenceName>
   </ConnectionManager>
+  <TaskHost
+    design-time-name="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source"
+          TopLeft="290,231" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1"
+          TopLeft="658,229" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC"
+          TopLeft="296,370" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID"
+          TopLeft="745,359" />
+        <EdgeLayout
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables.Paths[OLE DB Source Output]"
+          TopLeft="365,273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,97"
+              Start="0,0"
+              End="0,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables.Paths[OLE DB Source Output1]"
+          TopLeft="737.5,271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88,88"
+              Start="0,0"
+              End="88,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40"
+                    Point2="0,44"
+                    Point3="4,44" />
+                  <mssgle:LineSegment
+                    End="84,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84,44"
+                    Point2="88,44"
+                    Point3="88,48" />
+                  <mssgle:LineSegment
+                    End="88,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimFMSBOC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Build DimG2NTVACC DimFMSBOC\Update Prod Dim tables\DimG2NTVACCID">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17">
     <LayoutInfo>
