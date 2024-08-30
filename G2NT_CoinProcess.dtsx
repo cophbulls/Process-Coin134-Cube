@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="G2NT_CoinProcess"
   DTS:PackageType="5"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{4C3FB675-A0FA-4103-8BF9-21CE9A26135C}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{4CCBEE4A-E01B-48B8-83D3-97760C0CEC0F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4110,7 +4110,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="COIN - Dimension Tables failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -4130,7 +4130,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="COIN Cube Processing Failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -4150,7 +4150,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT Cube Processing Failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -4170,7 +4170,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT- Dimension tables failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -4190,7 +4190,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT- DimFMSFacility failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -4210,7 +4210,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="G2NT_Coin Failed"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
@@ -4225,6 +4225,7 @@
       DTS:refId="Package\S3BucketData"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{AB5AC087-1A3C-4411-8418-D542625D890D}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -4239,7 +4240,7 @@
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -11361,7 +11362,7 @@
           DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Analysis Services Execute DDL Task(BACKUP)"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASDdlData
@@ -11378,7 +11379,7 @@
           DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Analysis Services Execute DDL Task(RESTORE)"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASDdlData
@@ -11955,7 +11956,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Process Cube"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASProcessingData
@@ -11971,7 +11972,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Process Dimensions"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASProcessingData
@@ -12009,7 +12010,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Delete old FY records"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -12025,7 +12026,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Process G2nt Cube"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASProcessingData
@@ -12041,7 +12042,7 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="PROCESS G2NT DIMENSIONS"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ASProcessingData
@@ -12440,6 +12441,43 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
           Size="163,42"
           Id="Package\G2NT_Coin Failed"
           TopLeft="1266,797" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\S3BucketData\Execute SQL Task"
+          TopLeft="7,5.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\S3BucketData\Load S3BucketData"
+          TopLeft="5.5,71" />
+        <EdgeLayout
+          Id="Package\S3BucketData.PrecedenceConstraints[Constraint]"
+          TopLeft="89.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.5"
+              Start="0,0"
+              End="0,16">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="181,119"
+          Size="181,162"
+          Id="Package\S3BucketData"
+          TopLeft="84,670" />
         <NodeLayout
           Size="293,42"
           Id="Package\Sequence Container\Analysis Services Execute DDL Task(BACKUP)"
@@ -13075,43 +13113,6 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\S3BucketData\Execute SQL Task"
-          TopLeft="7,5.5" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\S3BucketData\Load S3BucketData"
-          TopLeft="5.5,71" />
-        <EdgeLayout
-          Id="Package\S3BucketData.PrecedenceConstraints[Constraint]"
-          TopLeft="89.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.5"
-              Start="0,0"
-              End="0,16">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="181,118"
-          Size="181,162"
-          Id="Package\S3BucketData"
-          TopLeft="84,670" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -13256,46 +13257,6 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="252,42"
-          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17"
-          TopLeft="203,234" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20"
-          TopLeft="232,154" />
-        <EdgeLayout
-          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17.Paths[OLE DB Source Output]"
-          TopLeft="325.5,196">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
     design-time-name="Package\S3BucketData\Load S3BucketData">
     <LayoutInfo>
       <GraphLayout
@@ -13358,5 +13319,45 @@ WHERE ( [Facility].[VISN District].&amp;[V00] : [Facility].[VISN District].&amp;
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="252,42"
+          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134_NonCum_Raw bi17"
+          TopLeft="203,234" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17\Finance Coin134 bi20"
+          TopLeft="232,154" />
+        <EdgeLayout
+          Id="Package\Update Add Non-Cum Fields\Data Flow Coin134 bi20 to Coin134_NonCum_Raw bi17.Paths[OLE DB Source Output]"
+          TopLeft="325.5,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
