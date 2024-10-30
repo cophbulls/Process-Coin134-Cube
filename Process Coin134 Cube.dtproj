@@ -14,11 +14,6 @@
     <Manifest>
       <DTSPackages>
         <DtsPackage FormatVersion="8">
-          <Name>zzzCombined PackageOld.dtsx</Name>
-          <FullPath>zzzCombined PackageOld.dtsx</FullPath>
-          <References />
-        </DtsPackage>
-        <DtsPackage FormatVersion="8">
           <Name>G2NT_CoinProcess.dtsx</Name>
           <FullPath>G2NT_CoinProcess.dtsx</FullPath>
           <References />
@@ -31,6 +26,11 @@
         <DtsPackage FormatVersion="8">
           <Name>Update dimHRStation_PAID.dtsx</Name>
           <FullPath>Update dimHRStation_PAID.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>zzzCombined PackageOld.dtsx</Name>
+          <FullPath>zzzCombined PackageOld.dtsx</FullPath>
           <References />
         </DtsPackage>
       </DTSPackages>
